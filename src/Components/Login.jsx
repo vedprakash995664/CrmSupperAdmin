@@ -11,41 +11,47 @@ const Login = () => {
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [focusedField, setFocusedField] = useState("");
+  const [loading, setLoading] = useState(false); // State to track loading
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!userName || !password) {
       setError("All fields are required.");
       toast.error("All fields are required.");
       return;
     }
     const formData = { userName, password };
-    const APi_Url=import.meta.env.VITE_API_URL
+    const APi_Url = import.meta.env.VITE_API_URL;
+
     try {
+      setLoading(true); // Start loading
       const response = await axios.post(`${APi_Url}/digicoder/crm/api/v1/superadmin/login`, formData);
 
       if (response.data) {
         toast.success("Logged in successfully!");
-        const tokenId='sdsfhfdsbc';        
-        sessionStorage.setItem('Token',tokenId);
-        const SuperAdminID=response.data.existUser._id;
-        sessionStorage.setItem("SuperAdmin",SuperAdminID);
-        
+        const tokenId = 'sdsfhfdsbc';
+        sessionStorage.setItem('Token', tokenId);
+        const SuperAdminID = response.data.existUser._id;
+        sessionStorage.setItem("SuperAdmin", SuperAdminID);
+
         setTimeout(() => {
           setuserName("");
           setPassword("");
-          navigate('/dashboard',);
+          setLoading(false); // Stop loading
+          navigate('/dashboard');
         }, 500);
       } else {
         setError("Invalid userName or password.");
         toast.error("Invalid userName or password.");
+        setLoading(false); // Stop loading on error
       }
     } catch (error) {
       setError("An error occurred while processing your request.");
       toast.error("An error occurred while processing your request.");
       console.error(error);
+      setLoading(false); // Stop loading on error
     }
   };
 
@@ -72,7 +78,7 @@ const Login = () => {
             <legend>userName</legend>
             <div className="input-group">
               <input
-                type="userName"
+                type="text"
                 id="userName"
                 name="userName"
                 placeholder="Enter your userName"
@@ -115,7 +121,17 @@ const Login = () => {
           </div>
           <br />
           {error && <div className="error-message">{error}</div>}
-          <button type="submit" className="submit-btn">Login</button>
+          <button 
+            type="submit" 
+            className="submit-btn" 
+            disabled={loading} // Disable button while loading
+          >
+            {loading ? (
+              <div className="spinner"></div> // Spinner shows while loading
+            ) : (
+              "Login"
+            )}
+          </button>
         </form>
       </div>
 
