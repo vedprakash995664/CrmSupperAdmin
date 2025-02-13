@@ -1,0 +1,139 @@
+/* Form container */
+.addUser-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+/* Form headings */
+.addUser-h3 {
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.addUser-h2, .addUser-h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.addUser-label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input styling */
+.addUser-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.addUser-input:focus {
+    outline: none;
+    border-color: #3454D1;
+    box-shadow: 0 0 5px rgba(95, 158, 160, 0.3);
+}
+
+/* Button styling */
+.addUser-button {
+    background-color: #3454D1;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addUser-button:hover {
+    background-color: #468c7b;
+}
+
+/* Section for each group of fields */
+.addUser-div {
+    margin-bottom: 15px;
+}
+
+/* Flexbox for two fields in one row */
+.addUser-div.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.addUser-div.half {
+    width: 48%;
+}
+
+.addUser-div.row .addUser-input {
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .addUser-form {
+        padding: 15px;
+    }
+
+    .addUser-h3 {
+        font-size: 1.2em;
+    }
+
+    .addUser-input {
+        padding: 8px;
+    }
+
+    .addUser-button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .addUser-div.row {
+        flex-direction: row;
+    }
+
+    .addUser-div.half {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .addUser-form {
+        padding: 10px;
+    }
+
+    .addUser-h2, .addUser-h1 {
+        font-size: 1.2em;
+    }
+
+    .addUser-input {
+        font-size: 0.9em;
+    }
+
+    .addUser-button {
+        font-size: 1em;
+        padding: 12px;
+    }
+
+    .addUser-div.row {
+        flex-direction: row;
+    }
+
+    .addUser-div.half {
+        width: 48%;
+    }
+}

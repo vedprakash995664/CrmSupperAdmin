@@ -1,0 +1,27 @@
+[
+    {
+      "Name":"Ved Prakash",
+      "email": "ved@gmail.com",
+      "password": "1234",
+      "mobile":"76389734879",
+      "companyName":"digicoders",
+      "companyType":"Information Technology",
+      "Street":"chauki",
+      "city":"jgyfsubkh",
+      "State":"Up",
+      "Country":"India"
+    },
+    {
+      "Name":"Satya Prakash",
+      "email": "satya@gmail.com",
+      "password": "1234",
+      "mobile":"76389734879",
+      "companyName":"ramu call center",
+      "companyType":"Call Center",
+      "Street":"chauki",
+      "city":"jgyfsubkh",
+      "State":"Up",
+      "Country":"India"
+    }
+  ]
+  
