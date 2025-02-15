@@ -45,8 +45,8 @@ function UsersFullPage() {
           Password: response.data.admin.password,
           Gender: response.data.admin.gender,
           DateOfBirth: response.data.admin.DateOfBirth,
-          CompanyType: response.data.admin.companyName,
-          CompanyName: response.data.admin.companyType,
+          CompanyType: response.data.admin.companyType,
+          CompanyName: response.data.admin.companyName,
           Street: response.data.admin.street,
           ZipCode: response.data.admin.zipCode,
           City: response.data.admin.city,
@@ -208,10 +208,11 @@ function UsersFullPage() {
                       onChange={handleChange}
                       disabled={isDisabled}
                     >
-                      <option value="" disabled>-- Select --</option>
-                      <option value="Sales">Sales</option>
-                      <option value="IT">Information Technology</option>
-                      <option value="Medical">Medicals</option>
+                  <option value="">Select Company</option>
+            <option value="Company A">Company A</option>
+            <option value="Company B">Company B</option>
+            <option value="Company C">Company C</option>
+            <option value="Company D">Company D</option>
                     </select>
                   </div>
                   <div>
