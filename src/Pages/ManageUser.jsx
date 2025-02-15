@@ -75,7 +75,11 @@ export default function ManageUser() {
         setFirst(event.first);
         setRows(event.rows);
     };
-
+    const [finalEmployee,setFinalEmployee]=useState([])
+useEffect(()=>{
+    const data =employees.filter((item)=>item.blocked===false)
+    setFinalEmployee(data)
+})
     const renderHeader = () => (
         <div className="flex justify-content-between gap-3 align-items-center p-2">
             <h3>User Details</h3>
@@ -99,8 +103,8 @@ export default function ManageUser() {
         
         try {
             // Ensure rowData has id before making the delete request
-            if (rowData && rowData.id) {
-                await axios.delete(`http://localhost:3000/digicoder/crm/api/v1/admin/delete/${rowData._id}`);
+            if (rowData && rowData._id) {
+                await axios.put(`${APi_Url}/digicoder/crm/api/v1/admin/block/${rowData._id}`);
                 setEmployees(employees.filter((user) => user.id !== rowData.id));
                 toast.current?.show({
                     severity: "success",
@@ -178,7 +182,7 @@ export default function ManageUser() {
                 <Toast ref={toast} />
 
                 <DataTable
-                    value={employees}
+                    value={finalEmployee}
                     rows={rows}
                     first={first}
                     paginator

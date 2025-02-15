@@ -167,19 +167,13 @@ console.log(userData);
         </div>
         <div className="addUser-div">
           <label className="addUser-label">Company Type:</label>
-          <select
+          <input
+            type="text"
             name="companyType"
             value={userData.companyType}
             onChange={handleChange}
             className="addUser-input"
-            
-          >
-            <option value="">Select Company</option>
-            <option value="Company A">Company A</option>
-            <option value="Company B">Company B</option>
-            <option value="Company C">Company C</option>
-            <option value="Company D">Company D</option>
-          </select>
+          />
         </div>
         <div className="addUser-div">
           <label className="addUser-label">Street:</label>

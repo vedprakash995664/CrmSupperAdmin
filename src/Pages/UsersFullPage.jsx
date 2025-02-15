@@ -146,7 +146,7 @@ function UsersFullPage() {
                   <div>
                     <div className="label">Password</div>
                     <input
-                      type="password"
+                      type="text"
                       className="input-field"
                       name="Password"
                       value={formData.Password}
@@ -201,19 +201,14 @@ function UsersFullPage() {
                 <div className="form-row">
                   <div>
                     <div className="label">Company Type</div>
-                    <select
+                    <input
+                      type="text"
                       className="input-field"
-                      name="CompanyType"
+                      name="CompanyName"
                       value={formData.CompanyType}
                       onChange={handleChange}
                       disabled={isDisabled}
-                    >
-                  <option value="">Select Company</option>
-            <option value="Company A">Company A</option>
-            <option value="Company B">Company B</option>
-            <option value="Company C">Company C</option>
-            <option value="Company D">Company D</option>
-                    </select>
+                    />
                   </div>
                   <div>
                     <div className="label">Company Name</div>

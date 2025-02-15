@@ -63,7 +63,7 @@ const Dashboard = ({ children, active }) => {
   return (
     <div className="dashboard-container">
       <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
-        <div className="sidebar-logo">CRM DASH</div>
+      <div className="sidebar-logo"><img src="/Images/logo.png" style={{width:"200px"}} alt="" /></div>
         <div className="navigation">
           <ul className="sidebar-nav-links">
             <Link className="navigation-link" to="/dashboard">
@@ -87,6 +87,13 @@ const Dashboard = ({ children, active }) => {
                 </button>
               </li>
             </Link>
+            {/* <Link className="navigation-link" to="/manageUser">
+              <li>
+                <button className={`sidebar-link ${active === 'assigned' && 'active'}`}>
+                <i class="ri-group-fill"></i>&nbsp;Add Company Type
+                </button>
+              </li>
+            </Link> */}
           </ul>  
         </div>
         <div className="logout-div">
