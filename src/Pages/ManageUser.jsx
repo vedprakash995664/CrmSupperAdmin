@@ -61,7 +61,6 @@ export default function ManageUser() {
     const [globalFilterValue, setGlobalFilterValue] = useState("");
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
-    const [selectedRows, setSelectedRows] = useState([]);
 
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
@@ -131,16 +130,6 @@ useEffect(()=>{
             });
         }
     };
-
-    const handleCheckboxChange = (e, rowData) => {
-        const checked = e.target.checked;
-        if (checked) {
-            setSelectedRows([...selectedRows, rowData]);
-        } else {
-            setSelectedRows(selectedRows.filter((item) => item !== rowData));
-        }
-    };
-
     const actionBodyTemplate = (rowData) => (
         <div className="flex justify-content-around gap-3">
             <button
@@ -202,11 +191,6 @@ useEffect(()=>{
                         header="SR No"
                         body={(rowData, { rowIndex }) => (
                             <div className="flex align-items-center gap-3">
-                                <input
-                                    type="checkbox"
-                                    checked={selectedRows.includes(rowData)}
-                                    onChange={(e) => handleCheckboxChange(e, rowData)}
-                                />
                                 {rowIndex + 1}
                             </div>
                         )}

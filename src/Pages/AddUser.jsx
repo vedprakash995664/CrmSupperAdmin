@@ -36,10 +36,11 @@ const APi_Url=import.meta.env.VITE_API_URL
     e.preventDefault();
 
     setLoading(true);
-console.log(userData);
+console.log("ebhjr",userData);
 
     try {
       const SuperAdminID=sessionStorage.getItem("SuperAdmin")
+      
       const response = await axios.post(
         `${APi_Url}/digicoder/crm/api/v1/admin/add/${SuperAdminID}`,
         userData,

@@ -38,6 +38,8 @@ function UsersFullPage() {
       try {
         
         const response = await axios.get(`${APi_Url}/digicoder/crm/api/v1/admin/getone/${viewdata._id}`);
+        console.log(response.data.admin);
+        
         setFormData({
           Name:response.data.admin.name,
           Email: response.data.admin.email,
@@ -56,6 +58,7 @@ function UsersFullPage() {
 
         })
         setLoading(false);
+        
       } catch (error) {
         setLoading(false);
         toast.error("Failed to fetch user data.");
@@ -79,7 +82,7 @@ function UsersFullPage() {
     try {
       console.log("Form Data:", formData);
       // API call to update the user data without token
-      const response = await axios.put(`http://your-api-endpoint.com/users/${viewdata._id}`, formData);
+      const response = await axios.put(`${APi_Url}/digicoder/crm/api/v1/admin/update/${viewdata._id}`, formData);
 
       if (response.status === 200) {
         toast.success("Updated successfully!");
