@@ -6,6 +6,7 @@ import MainDashboard from './Pages/MainDashboard'
 import AddUser from './Pages/AddUser'
 import ManageUser from './Pages/ManageUser'
 import UsersFullPage from './Pages/UsersFullPage'
+import Profile from './Pages/Profile'
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route path='/addUser' element={<AddUser/>}/>
           <Route path='/manageUser' element={<ManageUser/>}/>
           <Route path='/manageUser/userFullPage' element={<UsersFullPage/>}/>
+          <Route path='/profile' element={<Profile/>}/>
         </Routes>
       </Router>
     </>
