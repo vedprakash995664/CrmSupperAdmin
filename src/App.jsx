@@ -7,6 +7,7 @@ import AddUser from './Pages/AddUser'
 import ManageUser from './Pages/ManageUser'
 import UsersFullPage from './Pages/UsersFullPage'
 import Profile from './Pages/Profile'
+import DeletedUser from './Pages/DeletedUser'
 function App() {
   return (
     <>
@@ -18,6 +19,8 @@ function App() {
           <Route path='/manageUser' element={<ManageUser/>}/>
           <Route path='/manageUser/userFullPage' element={<UsersFullPage/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/deletedUser' element={<DeletedUser/>}/>
+          <Route path='/deletedUser/userFullPage' element={<UsersFullPage/>}/>
         </Routes>
       </Router>
     </>

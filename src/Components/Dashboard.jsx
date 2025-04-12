@@ -87,6 +87,13 @@ const Dashboard = ({ children, active }) => {
                 </button>
               </li>
             </Link>
+            <Link className="navigation-link" to="/deletedUser">  
+              <li>
+                <button className={`sidebar-link ${active === 'assigned' && 'active'}`}>
+                <i class="ri-user-unfollow-fill"></i>&nbsp;Blocked Users
+                </button>
+              </li>
+            </Link>
             {/* <Link className="navigation-link" to="/manageUser">
               <li>
                 <button className={`sidebar-link ${active === 'assigned' && 'active'}`}>

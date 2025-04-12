@@ -9,12 +9,12 @@ import Dashboard from "../Components/Dashboard";
 import { Toast } from "primereact/toast";
 import Swal from "sweetalert2";
 
-export default function ManageUser() {
+export default function DeletedUser() {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(false);
     const toast = useRef(null);
     const navigate = useNavigate();
-    const APi_Url=import.meta.env.VITE_API_URL
+    const APi_Url = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -71,16 +71,16 @@ export default function ManageUser() {
         setRows(event.rows);
     };
 
-    const [finalEmployee,setFinalEmployee]=useState([])
+    const [finalEmployee, setFinalEmployee] = useState([]);
 
-    useEffect(()=>{
-        const data = employees.filter((item)=>item.blocked===false)
-        setFinalEmployee(data)
-    },[employees])
+    useEffect(() => {
+        const data = employees.filter((item) => item.blocked === true);
+        setFinalEmployee(data);
+    }, [employees]);
 
     const renderHeader = () => (
         <div className="flex justify-content-between gap-3 align-items-center p-2">
-            <h3>User Details</h3>
+            <h3>Blocked User Details</h3>
             <div>
                 <InputText
                     value={globalFilterValue}
@@ -96,32 +96,32 @@ export default function ManageUser() {
         navigate("userFullPage", { state: { viewdata: rowData } });
     };
 
-    const handleDelete = async (rowData) => {
+    const handleUnblock = async (rowData) => {
         const result = await Swal.fire({
             title: 'Are you sure?',
-            text: "You want to block this user?",
+            text: "You want to unblock this user?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, block it!'
+            confirmButtonText: 'Yes, unblock it!'
         });
 
         if (result.isConfirmed) {
             try {
-                await axios.put(`${APi_Url}/digicoder/crm/api/v1/admin/block/${rowData._id}`);
+                await axios.put(`${APi_Url}/digicoder/crm/api/v1/admin/unblock/${rowData._id}`);
                 setEmployees(employees.filter((user) => user._id !== rowData._id));
                 toast.current?.show({
                     severity: "success",
-                    summary: "Blocked",
-                    detail: "User blocked successfully",
+                    summary: "Unblocked",
+                    detail: "User unblocked successfully",
                     life: 3000,
                 });
             } catch (error) {
                 toast.current?.show({
                     severity: "error",
                     summary: "Error",
-                    detail: "Failed to block user",
+                    detail: "Failed to unblock user",
                     life: 3000,
                 });
             }
@@ -146,19 +146,19 @@ export default function ManageUser() {
                 <i className="ri-eye-line"></i>
             </button>
             <button
-                onClick={() => handleDelete(rowData)}
+                onClick={() => handleUnblock(rowData)}
                 style={{
                     borderRadius: "50%",
                     border: "none",
                     height: "40px",
                     width: "40px",
                     backgroundColor: "#EDF1FF",
-                    color: "#FE1011",
+                    color: "#4CAF50",
                     fontSize: "20px",
                     cursor: "pointer",
                 }}
             >
-                <i className="ri-lock-line"></i>
+                <i className="ri-lock-unlock-fill"></i>
             </button>
         </div>
     );
@@ -177,7 +177,7 @@ export default function ManageUser() {
                     filterDisplay="row"
                     globalFilterFields={["name", "email", "mobile", "companyName", "companyType", "street", "city", "state", "country"]}
                     header={renderHeader()}
-                    emptyMessage="No users found."
+                    emptyMessage="No blocked users found."
                     onPage={onPageChange}
                     paginatorTemplate=" PrevPageLink PageLinks NextPageLink "
                     removableSort
