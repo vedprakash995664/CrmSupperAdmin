@@ -30,14 +30,10 @@ body {
   color: red;
 }
 .sidebar-logo {
-  font-size: 28px;
   font-family: "Poppins", serif;
-  font-weight: bolder;
   width: 100%;  
   border-bottom: 1px solid rgb(198, 198, 198);
   text-align: center;
-  padding: 23px 0px;
-  line-height: 33px;
   background-color: #edf1ff;
 }
 
